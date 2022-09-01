@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() 
+{
+    int N,M,i,j,min,temp=0,sub;
+    scanf("%d %d",&N,&M);
+    int stdmrk[N][M],sum[N];
+    
+    for(i=0;i<N;i++)
+    for(j=0;j<M;j++)
+    scanf("%d",&stdmrk[i][j]);
+    
+    for(i=0;i<M;i++,temp=0)
+    {
+        for(j=0;j<N;j++) temp+=stdmrk[j][i];
+        temp/=N;
+        if(i==0) {min=temp;sub=i;}
+        else 
+        if(temp<min) {min=temp;sub=i;}
+    }
+    
+    for(i=0;i<N;i++)
+    {
+        sum[i]=0;
+        for(j=0;j<M;j++) if(j!=sub) sum[i]+=stdmrk[i][j];
+        printf("%d ",sum[i]);
+    }
+    return 0;
+}
